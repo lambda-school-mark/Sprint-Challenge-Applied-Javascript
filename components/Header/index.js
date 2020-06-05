@@ -28,7 +28,11 @@ function Header() {
   headerDate.classList.add("date");
   headerTemp.classList.add("temp");
 
+  headerTitle.textContent = "Lambda Times";
+  headerDate.textContent = "MARCH 28, 2019";
+  headerTemp.textContent = "98°";
+
   return headerDiv;
 }
 
-console.log(Header());
+Header();
