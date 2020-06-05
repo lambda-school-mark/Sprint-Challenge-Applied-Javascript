@@ -22,25 +22,13 @@
 axios
   .get("https://lambda-times-backend.herokuapp.com/articles")
   .then((response) => {
-    Object.values(response.data.articles.bootstrap).forEach((element) => {
-      console.log(element);
-      cardMaker(element);
-    });
-    Object.values(response.data.articles.javascript).forEach((element) => {
-      //   console.log(element);
-      cardMaker(element);
-    });
-    Object.values(response.data.articles.jquery).forEach((element) => {
-      //   console.log(element);
-      cardMaker(element);
-    });
-    Object.values(response.data.articles.node).forEach((element) => {
-      //   console.log(element);
-      cardMaker(element);
-    });
-    Object.values(response.data.articles.technology).forEach((element) => {
-      //   console.log(element);
-      cardMaker(element);
+    const articles = response.data.articles;
+    console.log(Object.keys(articles));
+    Object.keys(articles).forEach((cat) => {
+      console.log(articles[cat]);
+      articles[cat].forEach((element) => {
+        cardMaker(element);
+      });
     });
   })
   .catch((error) => {
