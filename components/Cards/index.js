@@ -57,9 +57,9 @@ function cardMaker(dataInput) {
   cardAuthorClass.classList.add("author");
   cardContainerIMG.classList.add("img-container");
 
-  cardAuthorName.textContent = dataInput.authorName;
-  cardHeadline.textContent = dataInput.headline;
-  cardImage.src = dataInput.authorPhoto;
+  cardAuthorName.textContent = dataInput?.authorName;
+  cardHeadline.textContent = dataInput?.headline;
+  cardImage.src = dataInput?.authorPhoto;
 
   return cardDiv;
 }

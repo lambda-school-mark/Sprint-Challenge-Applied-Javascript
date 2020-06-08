@@ -17,3 +17,78 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+const carouselContainer = document.querySelector(".carousel-container");
+
+function carouselMaker() {
+  const carousel = document.createElement("div");
+  const buttonLeft = document.createElement("div");
+  const buttonRight = document.createElement("div");
+
+  carousel.classList.add("carousel");
+  buttonLeft.classList.add("left-button");
+  buttonRight.classList.add("right-button");
+
+  let images = [
+    "./assets/carousel/mountains.jpeg",
+    "./assets/carousel/computer.jpeg",
+    "./assets/carousel/turntable.jpeg",
+    "./assets/carousel/trees.jpeg",
+    "./assets/carousel/turntable.jpeg",
+  ];
+
+  const nodeItems = [];
+
+  images.map((imgItem, index) => {
+    const image = document.createElement("img");
+    image.src = imgItem;
+    carousel.appendChild(image);
+    nodeItems.push(image);
+  });
+
+  console.log(nodeItems);
+
+  carousel.appendChild(buttonLeft);
+  carousel.appendChild(buttonRight);
+
+  buttonRight.textContent = ">";
+  buttonLeft.textContent = "<";
+
+  carouselContainer.appendChild(carousel);
+
+  nodeItems[0].style.display = "block";
+
+  let currentImg = 0;
+
+  buttonRight.addEventListener("click", (event) => {
+    nodeItems[currentImg].style.display = "none";
+
+    const newImg = currentImg + 1;
+
+    if (nodeItems[newImg]) {
+      currentImg = newImg;
+      nodeItems[newImg].style.display = "block";
+    } else {
+      currentImg = 0;
+      nodeItems[0].style.display = "block";
+    }
+  });
+
+  buttonLeft.addEventListener("click", (event) => {
+    nodeItems[currentImg].style.display = "none";
+
+    const newImg = currentImg - 1;
+
+    if (nodeItems[newImg]) {
+      currentImg = newImg;
+      nodeItems[newImg].style.display = "block";
+    } else {
+      currentImg = nodeItems.length - 1;
+      nodeItems[nodeItems.length - 1].style.display = "block";
+    }
+  });
+
+  return carousel;
+}
+
+carouselMaker();
